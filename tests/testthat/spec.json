@@ -1,0 +1,39 @@
+{
+    "Name": "example",
+    "Description": "description for this module",
+    "Version": "0.1",
+    "CategoryTags": ["Basic", "R"],
+    "Cmd": "Rscript main.R",
+    "Param": {
+        "X": {
+            "Default": 1000,
+            "Type": "float"
+        },
+        "Y": {
+            "Default": 10,
+            "Type": "float"
+        },
+        "Max": {
+            "Default": 1,
+            "Type": "float"
+        },
+        "Type": {
+            "Default": "float",
+            "Enums": [
+                "int",
+                "float"
+            ],
+            "Type": "enum"
+        }
+    },
+    "Input": {
+        "Hello": [
+            "csv"
+        ]
+    },
+    "Output": {
+        "Matrix": [
+            "csv"
+        ]
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "PARAM": {
+        "Y": {
+            "Type": "string",
+            "Val": 10.0
+        },
+        "X": {
+            "Type": "string",
+            "Val": 1000.0
+        },
+        "Type": {
+            "Type": "string",
+            "Val": "float"
+        },
+        "Max": {
+            "Type": "string",
+            "Val": 1.0
+        }
+    },
+    "GLOBAL_PARAM": {
+        "userName": {
+            "Type": "string",
+            "Val": "xiaolin"
+        },
+        "hue_server": {
+            "Type": "string",
+            "Val": "http://192.168.1.20:8888/"
+        },
+        "blockId": {
+            "Type": "string",
+            "Val": "789"
+        },
+        "userId": {
+            "Type": "string",
+            "Val": "123"
+        },
+        "jobId": {
+            "Type": "string",
+            "Val": "456"
+        }
+    }
+}
