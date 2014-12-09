@@ -21,7 +21,7 @@
 #'   howto create a module.
 #' @examples
 #'
-#' \donttest{
+#' \dontrun{example to use DCRuntime
 #'   rt <- DCRuntime(spec_json = "/your_path/spec.json",
 #'                       zetrt_json = "/some_path/zetrt.json")
 #'   # Use "rt" like this:

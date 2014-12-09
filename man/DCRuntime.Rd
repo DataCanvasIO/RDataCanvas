@@ -28,7 +28,7 @@ In order to create a DCRuntime object, we should provide the following items:
 }
 }
 \examples{
-\donttest{
+\dontrun{example to use DCRuntime
   rt <- DCRuntime(spec_json = "/your_path/spec.json",
                       zetrt_json = "/some_path/zetrt.json")
   # Use "rt" like this:
