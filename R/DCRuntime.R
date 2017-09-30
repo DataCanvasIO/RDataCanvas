@@ -30,9 +30,47 @@
 #'   rt$Param$P1$Val
 #' }
 
+authentication <- function(){
+    kbConfig = jsonlite::fromJSON(Sys.getenv("kerberosConfig"))
+    kdcLocation = kbConfig["kdcLocation"]
+    kServer = kbConfig["kServer"]
+    userName = kbConfig["kUserName"]
+    keyTabServer = kbConfig["keyTabServer"]
+    keyTabPort = kbConfig["keyTabPort"]
+
+    # 1.  下载keyTab文件到~/.kb dir
+    destFile <- "/tmp/tmp.keyTab"
+    header1 <- " -H 'content-type:application/json'"
+    header2 <- " -H 'cache-control:no-cache'"
+    header3 <- paste0(" -H '_username:",userName,"'")
+    posturl <- paste0(" http://",keyTabServer,":",keyTabPort,"/v1/keytab/retrieve")
+    curlCommand = paste0("curl ",header1,header2,header3,posturl," -o ",destFile)
+
+    print(curlCommand)
+    system(curlCommand,intern = TRUE)
+
+    # 2. 整理keyTab文件
+    # 2. 执行shell
+    kinitCommand = paste0("kinit -kt ",destFile," ",userName)
+    print(kinitCommand)
+    kinitResult <- system(kinitCommand)
+    print(kinitResult)
+    if(kinitResult!=0){
+        print("authentication fail")
+        on.exit(-1)
+    }else{
+        print("authentication success, module is running")
+    }
+}
+
+
 DCRuntime <- function (spec_json = "spec.json",
                            zetrt_json = NULL,
                            args = NULL) {
+
+    if(Sys.getenv("isValidate")=="true"){
+        authentication()
+    }
 
     if (is.null(zetrt_json))
         zetrt_json <- Sys.getenv("ZETRT")
@@ -99,3 +137,11 @@ DCRuntime <- function (spec_json = "spec.json",
     obj
 }
 
+
+
+if(Sys.getenv("isValidate")=="true"){
+    # authentication()
+    text <- readLines("/etc/krb5.conf", encoding = "UTF-8")
+    print(paste0(text,'\n',"asdfdsf"))
+    # str("/etc/krb5.conf")
+}
