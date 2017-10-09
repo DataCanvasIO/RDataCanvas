@@ -1,0 +1,24 @@
+{
+  "Name": "aljson",
+  "Description": "A simple SVM",
+  "Version": "0.5",
+  "CategoryTags": [],
+  "Cmd": "python main.py",
+  "PARAM": "",
+  "Param": {
+    "filename": {
+      "Default": "jsondata.txt",
+      "Type": "string"
+    }
+  },
+  "Output": {
+    "df": [
+      "txt","pxl"
+    ]
+  },
+  "Input": {
+    "asd":[
+      "txt"
+    ]
+  }
+}
