@@ -70,6 +70,7 @@ authentication <- function(){
 
 DCRuntime <- function (spec_json = "spec.json", zetrt_json = NULL, args = NULL) {
 
+    flag <- FALSE
     if (Sys.getenv("isValidate") == "true") {
         flag <- authentication()
     }
@@ -143,12 +144,12 @@ DCRuntime <- function (spec_json = "spec.json", zetrt_json = NULL, args = NULL) 
 
 
 
-# if (Sys.getenv("isValidate") == "true") {
-#     # authentication()
-#     rt <- DCRuntime()
-#     print(rt)
-#     # krbServer <- "124.42.117.60"
-#     # echoCommand <- paste0("echo '[realms]\nTEST.COM = {\nkdc = ",krbServer,":88\nadmin_server = ",krbServer,":749\n}' >> /etc/krb5.conf")
-#     # print(echoCommand)
-#     # system(echoCommand,intern = TRUE)
-# }
+if (Sys.getenv("isValidate") == "true") {
+    # authentication()
+    rt <- DCRuntime()
+    print(rt)
+    # krbServer <- "124.42.117.60"
+    # echoCommand <- paste0("echo '[realms]\nTEST.COM = {\nkdc = ",krbServer,":88\nadmin_server = ",krbServer,":749\n}' >> /etc/krb5.conf")
+    # print(echoCommand)
+    # system(echoCommand,intern = TRUE)
+}

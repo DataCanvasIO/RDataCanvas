@@ -7,3 +7,9 @@
     ```shell
     kinit -kt hdfs.keytab hdfs/cdh1.test.com@TEST.COM
     ```
+    
+## 安装R包
+1. install R package
+    ```shell
+    sudo R CMD INSTALL RDataCanvas_0.1.1.tar.gz
+    ```
