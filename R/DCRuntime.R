@@ -75,11 +75,11 @@ DCRuntime <- function (spec_json = "spec.json", zetrt_json = NULL, args = NULL) 
         flag <- authentication()
     }
 
-    if (flag) {
+    if (flag|Sys.getenv("isValidate") != "true") {
         if (is.null(zetrt_json))
-        zetrt_json <- Sys.getenv("ZETRT")
+            zetrt_json <- Sys.getenv("ZETRT")
         if (is.null(args))
-        args <- commandArgs(trailingOnly = TRUE)
+            args <- commandArgs(trailingOnly = TRUE)
 
         zetrt_json <- jsonlite::fromJSON(txt = zetrt_json)
         obj <- jsonlite::fromJSON(txt = spec_json)
@@ -144,7 +144,7 @@ DCRuntime <- function (spec_json = "spec.json", zetrt_json = NULL, args = NULL) 
 
 
 
-if (Sys.getenv("isValidate") == "true") {
+if (Sys.getenv("isValidate") == "") {
     # authentication()
     rt <- DCRuntime()
     print(rt)
